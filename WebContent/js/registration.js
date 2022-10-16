@@ -2,6 +2,47 @@
  * 
  */
 
+const max_name_len = 45;
+const max_surname_len = 45;
+const max_username_len = 45;
+const max_password_len = 45;
+const max_email_len = 45;
+const address_len = 100;
+const country_len = 45;
+
+var country = []
+
+function setCB(){
+	var form = document.forms['registration-form'];
+	var option = form['country'];
+	var el = document.createElement("option");
+	el.innerHTML = 'Srbija';
+	option.appendChild(el);
+	for(var i = 0; i < country.length; i++){
+		var el = document.createElement("option");
+		el.innerHTML = country[i].name;
+		option.appendChild(el);
+	}
+}
+
+function read(){
+	setCB();
+	var request = new XMLHttpRequest();
+
+	request.onreadystatechange = function() {
+		if ((request.readyState == 4) && (request.status == 200)) {
+			country = JSON.parse(request.responseText);
+			
+			setCB();
+		}
+		
+		
+	}
+
+	request.open("GET", "https://restcountries.eu/rest/v2/region/europe", true)
+	request.send(null)
+}
+
 function validateForm(){
 	var result = true;
 	var usernamePromise;
