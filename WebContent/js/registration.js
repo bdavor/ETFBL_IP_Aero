@@ -103,3 +103,50 @@ function validateForm(){
 	
 	return result;
 }
+
+function checkUsername(username, usernameWarning){
+	return new Promise((resolve, reject)=>{
+		let xhttp = new XMLHttpRequest();
+		
+		xhttp.onreadystatechange = function() {
+			if (4 == this.readyState && 200 == this.status) {
+			  var responseJson = JSON.parse(xhttp.responseText);
+			  if(responseJson.exists){
+				  usernameWarning.innerHTML = "Korisnicko ime je zauzeto";
+				  usernameWarning.removeAttribute('hidden');
+				  resolve(false);
+			  }else{
+				  usernameWarning.setAttribute('hidden', 'true');
+				  resolve(true);
+			  }	
+			}
+		 }
+
+		xhttp.open("GET", "GlavniServlet?action=check-username&username=" + username, true);
+		xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+		xhttp.send();
+	});	
+}
+
+function checkEmail(email, emailWarning){
+	return new Promise((resolve, reject)=>{
+		let xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (4 == this.readyState && 200 == this.status) {
+				  var responseJson = JSON.parse(xhttp.responseText);
+				  if(responseJson.exists){
+					  emailWarning.innerHTML = "Email adresa je zauzeta";
+					  emailWarning.removeAttribute('hidden');
+					  resolve(false);
+				  }else{
+					  emailWarning.setAttribute('hidden', 'true');
+					  resolve(true);
+				  }
+			}
+		 }
+	
+		xhttp.open("GET", "GlavniServlet?action=check-email&email=" + email, true);
+		xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+		xhttp.send();
+	});
+}
