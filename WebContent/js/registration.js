@@ -43,6 +43,57 @@ function read(){
 	request.send(null)
 }
 
+function registration(){
+	if(validateForm()){
+		var form = document.forms['registration-form'];
+		
+		var name = form['name'].value;
+		var surname = form['surname'].value;
+		var username = form['username'].value;
+		var password = form['password'].value;
+		var passwordRepeat = form['password-repeat'].value;
+		var email = form['email'].value;
+		var address = form['address'].value;
+		var country = form['country'].value;
+		var account = "putnicki";
+		
+		if(form['teretni'].checked){
+			account = "teretni";
+		}
+		
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (4 == this.readyState && 200 == this.status) {
+				  var responseJson = JSON.parse(xhttp.responseText);
+				  if(responseJson.result){
+					  var regNotification = document.getElementById('registration-notification');
+					  regNotification.innerHTML = "Zahtjev za registraciju je uspješan.";
+					  regNotification.removeAttribute('hidden');
+					  
+					  setInterval(function(){
+						  window.location.replace(responseJson.redirectUrl);
+					  }, 5000);
+					  			  
+				  }else{
+					  console.log('Registracija nije uspjesna');
+				  }
+			}
+		 }
+	
+		xhttp.open("GET", "GlavniServlet?action=registracijaSlanjePodataka" + 
+				"&name=" + name +
+				"&surname=" + surname + 
+				"&username=" + username + 
+				"&password=" + password + 
+				"&email=" + email +
+				"&address=" + address +
+				"&country=" + country +
+				"&account=" + account, true);
+		xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+		xhttp.send();
+	}
+}
+
 function validateForm(){
 	var result = true;
 	var usernamePromise;
