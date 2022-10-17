@@ -134,6 +134,23 @@
 							</div>							
 						</div>
 						
+						<!-- Address field -->
+						<div class="row">
+							<div class=" offset-xs-2 offset-sm-2 offset-md-2 col-xs-2 col-sm-2 col-md-2">
+								<label for="address" class="col-form-label">Adresa</label>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<input class="form-control" type="text" id="address" name="address" placeholder="Unesite adresu."/>
+							</div>								
+						</div>
+						
+						<!-- Address warning field -->
+						<div class="row">
+							<div class=" offset-xs-4 offset-sm-4 offset-md-4 col-xs-6 col-sm-6 col-md-6">
+								<label id="address-warning" class="col-form-label text-danger" hidden="hidden">Greška pri unosu adrese.</label>
+							</div>							
+						</div>
+						
 						
 						
 						<!-- Registration success field -->
