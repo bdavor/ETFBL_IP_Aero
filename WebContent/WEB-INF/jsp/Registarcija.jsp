@@ -168,7 +168,25 @@
 							</div>							
 						</div>
 						
+						<!-- Account field -->
+						<div class="row">
+							<div class=" offset-xs-2 offset-sm-2 offset-md-2 col-xs-2 col-sm-2 col-md-2">
+								<label for="account" class="col-form-label">Vrsta naloga</label>
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6">
+								<div id="account">
+									<input type="radio" checked="checked" id="putnicki" name="putnicki"/>Putnicki
+									<input type="radio" id="teretni" name="teretni"/>Teretni
+								</div>
+							</div>								
+						</div>
 						
+						<!-- Account warning field -->
+						<div class="row">
+							<div class=" offset-xs-4 offset-sm-4 offset-md-4 col-xs-6 col-sm-6 col-md-6">
+								<label id="account-warning" class="col-form-label text-danger" hidden="hidden">Greška pri odabiru vrste naloga.</label>
+							</div>							
+						</div>
 						
 						<!-- Registration success field -->
 						<div class="row">
