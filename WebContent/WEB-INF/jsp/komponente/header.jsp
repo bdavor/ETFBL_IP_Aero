@@ -36,14 +36,6 @@
 				</div>
 			</div>
 
-			<!-- Registration link -->
-				<div class="row">
-					<div
-						class="offset-xs-4 offset-sm-4 offset-md-4 col-xs-6 col-sm-6 col-md-6">
-						<a href="<%=request.getContextPath()%>/GlavniServlet?action=Registracija"
-							class="text-center" style="width: 100%">Registracija</a>
-					</div>
-				</div>
 		</div>
 	</div>
 </body>
