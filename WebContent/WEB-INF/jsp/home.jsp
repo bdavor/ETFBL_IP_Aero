@@ -55,10 +55,10 @@
 						class="nav-item nav-link"
 						href="<%=request.getContextPath()%>/GlavniServlet?action=SviOdlasci">Svi odlasci</a> 
 						<%
-	  					
+						if(loggedIn){
 	  					%>
 						
-						
+						<%} %>
 				</div>
 			</div>
 		</nav>
