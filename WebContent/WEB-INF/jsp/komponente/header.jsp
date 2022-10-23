@@ -35,8 +35,8 @@
 					</div>
 				</div>
 			</div>
-			
-			<!-- Login column-->
+      
+      <!-- Login column-->
 			<div class="col-md-3">
 				<div class="row mt-2">
 					<div class="col-xs-12 col-sm-12 col-md-12">
@@ -135,7 +135,14 @@
 						</div>
 					</div>
 				</div>
-				
+				<!-- Registration link -->
+				<div class="row">
+					<div
+						class="offset-xs-4 offset-sm-4 offset-md-4 col-xs-6 col-sm-6 col-md-6">
+						<a href="<%=request.getContextPath()%>/GlavniServlet?action=Registracija"
+							class="text-center" style="width: 100%">Registracija</a>
+					</div>
+				</div>
 				<%} %>
 			</div>
 		</div>
