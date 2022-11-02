@@ -184,3 +184,40 @@ function reservationPutnicki(){
 	xhttp.send();
 	
 }
+
+function reservationTeretni(){
+	var form = document.forms['reservation-form'];
+	var date = document.getElementById('date').value;
+	var polazna_lokacija = form['location11'].value + '-' + form['location12'].value; 
+	var odrediste = form['location21'].value + '-' + form['location22'].value;
+	var opis_tereta = form['description'].value;
+	var specifikacija_robe = form['specification'].value;
+	
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (4 == this.readyState && 200 == this.status) {
+			  var responseJson = JSON.parse(xhttp.responseText);
+			  if(responseJson.result){
+				  var regNotification = document.getElementById('reservation-notification');
+				  regNotification.innerHTML = "Zahtjev za rezervaciju leta je uspješan.";
+				  regNotification.removeAttribute('hidden');
+				  
+				  setInterval(function(){
+					  window.location.replace(responseJson.redirectUrl);
+				  }, 5000);
+				  			  
+			  }else{
+				  console.log('Rezervacija leta nije uspjesna');
+			  }
+		}
+	 }
+	
+	xhttp.open("GET", "GlavniServlet?action=rezervacijaLetaSlanjePodatakaTeretni" + 
+			"&date=" + date +
+			"&polazna_lokacija=" + polazna_lokacija + 
+			"&odrediste=" + odrediste +
+			"&opis_tereta=" + opis_tereta +
+			"&specifikacija_robe=" + specifikacija_robe, true);
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+	xhttp.send();
+}
