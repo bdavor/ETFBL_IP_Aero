@@ -57,7 +57,9 @@
 						<%
 						if(loggedIn){
 	  					%>
-						
+						<a
+						class="nav-item nav-link"
+						href="<%=request.getContextPath()%>/GlavniServlet?action=RezervacijaLeta">Rezervacija leta</a>
 						<%} %>
 				</div>
 			</div>
