@@ -83,3 +83,36 @@ function readCB(){
 	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
 	xhttp.send();
 }
+
+function setCBGradovi1(){
+	var form = document.forms['reservation-form'];
+	var option = form['location12'];
+	if(gradovi1IzBaze.length == 0){
+		option.innerHTML = "";
+	} else{
+		option.innerHTML = "";
+		for(var i = 0; i < gradovi1IzBaze.length; i++){
+			var el = document.createElement("option");
+			el.innerHTML = gradovi1IzBaze[i];
+			option.appendChild(el);
+		}
+	}
+}
+
+function readCity1(){
+	var country = document.getElementById('location11').value;
+	
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (4 == this.readyState && 200 == this.status) { 
+			var responseJson = JSON.parse(xhttp.responseText);
+			  if(responseJson){
+				  gradovi1IzBaze = responseJson.gradoviIzBaze;
+				  setCBGradovi1();
+			 }
+		}
+	 }
+	xhttp.open("GET", "GlavniServlet?action=readReservationCBCity&country=" + country, true);
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+	xhttp.send();
+}
