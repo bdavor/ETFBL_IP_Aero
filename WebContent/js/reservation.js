@@ -42,3 +42,44 @@ function procitajLet(){
 		xhttp.send();
 	});	
 }
+
+function setCB(){
+	var form = document.forms['reservation-form'];
+	var option = form['location11'];
+	if(drzaveIZBaze.length == 0){
+		option.innerHTML = "";
+	} else{
+		for(var i = 0; i < drzaveIZBaze.length; i++){
+			var el = document.createElement("option");
+			el.innerHTML = drzaveIZBaze[i];
+			option.appendChild(el);
+		}
+	}
+	
+	var option2 = form['location21'];
+	if(drzaveIZBaze.length == 0){
+		option.innerHTML = "";
+	} else {
+		for(var i = 0; i < drzaveIZBaze.length; i++){
+			var el = document.createElement("option");
+			el.innerHTML = drzaveIZBaze[i];
+			option2.appendChild(el);
+		}
+	}
+}
+
+function readCB(){
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (4 == this.readyState && 200 == this.status) { 
+			var responseJson = JSON.parse(xhttp.responseText);
+			  if(responseJson){
+				  drzaveIZBaze = responseJson.drzaveIZBaze;
+				  setCB();
+			 }
+		}
+	 }
+	xhttp.open("GET", "GlavniServlet?action=readReservationCB", true);
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+	xhttp.send();
+}
