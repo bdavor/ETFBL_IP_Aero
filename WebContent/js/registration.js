@@ -15,9 +15,6 @@ var country = []
 function setCB(){
 	var form = document.forms['registration-form'];
 	var option = form['country'];
-	var el = document.createElement("option");
-	el.innerHTML = 'Srbija';
-	option.appendChild(el);
 	for(var i = 0; i < country.length; i++){
 		var el = document.createElement("option");
 		el.innerHTML = country[i].name;

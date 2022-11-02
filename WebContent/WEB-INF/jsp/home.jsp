@@ -59,6 +59,9 @@
 	  					%>
 						<a
 						class="nav-item nav-link"
+						href="<%=request.getContextPath()%>/GlavniServlet?action=RezervacijaLeta">Rezervacija leta</a>
+						<a
+						class="nav-item nav-link"
 						href="<%=request.getContextPath()%>/GlavniServlet?action=SveRezervacije">Sve rezervacije</a>
 						<%} %>
 				</div>
