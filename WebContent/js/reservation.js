@@ -179,7 +179,8 @@ function reservationPutnicki(){
 	xhttp.open("GET", "GlavniServlet?action=rezervacijaLetaSlanjePodatakaPutnicki" + 
 			"&date=" + date +
 			"&polazna_lokacija=" + polazna_lokacija + 
-			"&odrediste=" + odrediste, true);
+			"&odrediste=" + odrediste +
+			"&broj_mjesta=" + broj_mjesta, true);
 	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
 	xhttp.send();
 	
